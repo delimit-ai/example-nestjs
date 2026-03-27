@@ -7,7 +7,8 @@ export interface Task {
   description: string | null;
   status: string;
   created_at: string;
-  assignee: string | null;
+  assigned_to: string | null;
+  priority: string;
 }
 
 @Injectable()
@@ -37,17 +38,10 @@ export class TasksService {
       description: dto.description || null,
       status: "pending",
       created_at: new Date().toISOString(),
-      assignee: dto.assignee || null,
+      assigned_to: dto.assigned_to || null,
+      priority: dto.priority,
     };
     this.tasks.push(task);
     return task;
-  }
-
-  remove(id: number): void {
-    const index = this.tasks.findIndex((t) => t.id === id);
-    if (index === -1) {
-      throw new NotFoundException("Task not found");
-    }
-    this.tasks.splice(index, 1);
   }
 }

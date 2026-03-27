@@ -1,4 +1,4 @@
-import { IsString, IsOptional } from "class-validator";
+import { IsString, IsOptional, IsIn } from "class-validator";
 
 export class CreateTaskDto {
   @IsString()
@@ -10,5 +10,9 @@ export class CreateTaskDto {
 
   @IsOptional()
   @IsString()
-  assignee?: string;
+  assigned_to?: string;
+
+  @IsString()
+  @IsIn(["low", "medium", "high"])
+  priority: string;
 }
