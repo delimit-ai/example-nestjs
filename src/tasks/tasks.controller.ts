@@ -2,7 +2,6 @@ import {
   Controller,
   Get,
   Post,
-  Delete,
   Param,
   Body,
   Query,
@@ -32,9 +31,5 @@ export class TasksController {
     return this.tasksService.findOne(id);
   }
 
-  @Delete(":id")
-  @HttpCode(204)
-  remove(@Param("id", ParseIntPipe) id: number) {
-    this.tasksService.remove(id);
-  }
+  // DELETE endpoint removed
 }

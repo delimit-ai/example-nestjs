@@ -8,7 +8,7 @@ export class HealthController {
   check() {
     return {
       status: "healthy",
-      uptime: Math.floor((Date.now() - this.startTime) / 1000),
+      uptime: `${Math.floor((Date.now() - this.startTime) / 1000)} seconds`,
     };
   }
 }
